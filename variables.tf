@@ -44,6 +44,7 @@ variable "mq_configuration" {
     id       = string
     revision = number
   })
+  default = null
 }
 
 variable "security_group_ids" {
