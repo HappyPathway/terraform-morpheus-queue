@@ -1,4 +1,4 @@
-data "aws_subnets" "db_subnets" {
+data "aws_subnets" "mq_subnets" {
   filter {
     name   = "vpc-id"
     values = [var.vpc_id]
@@ -8,4 +8,8 @@ data "aws_subnets" "db_subnets" {
     values = [var.subnet_name_filter]
   }
 }
+
+data "aws_region" "current" {}
+data "aws_caller_identity" "current" {}
+data "aws_partition" "current" {}
 
