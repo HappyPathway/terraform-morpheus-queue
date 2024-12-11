@@ -5,7 +5,7 @@
 
 # __generated__ by Terraform
 resource "aws_mq_broker" "mq" {
-  for_each                            = toset(var.create_mq ? var.brokers : [])
+  for_each                            = toset(var.brokers)
   apply_immediately                   = null
   authentication_strategy             = "simple"
   auto_minor_version_upgrade          = true
@@ -20,17 +20,15 @@ resource "aws_mq_broker" "mq" {
   security_groups = var.mq_security_group == null ? concat(
     var.security_group_ids,
     [
-      one(aws_security_group.mq).id,
-      local.security_group_ids
+      one(aws_security_group.mq).id
     ]
   ) : [var.mq_security_group]
 
   storage_type = "ebs"
   subnet_ids   = data.aws_subnets.db_subnets.ids
-
   user {
-    username = var.username
-    password = local.db_credentials
+    username = var.user.username
+    password = var.user.db_credentials
   }
   tags = {
     costAllocation = "MorpheusDev"
