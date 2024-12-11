@@ -20,7 +20,7 @@ resource "aws_mq_broker" "mq" {
   security_groups = concat(
     var.security_group_ids,
     [
-      one(aws_security_group.mq).id
+      aws_security_group.mq.id
     ]
   )
 
