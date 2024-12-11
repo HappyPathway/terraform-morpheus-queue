@@ -69,3 +69,8 @@ variable "user" {
     db_credentials = string
   })
 }
+
+variable "subnet_name_filter" {
+  description = "The filter for subnet names"
+  type        = string
+}
