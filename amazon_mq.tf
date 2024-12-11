@@ -25,7 +25,7 @@ resource "aws_mq_broker" "mq" {
   ) : [var.mq_security_group]
 
   storage_type = "ebs"
-  subnet_ids   = data.aws_subnets.db_subnets.ids
+  subnet_ids   = data.aws_subnets.mq_subnets.ids
   user {
     username = var.user.username
     password = var.user.db_credentials
