@@ -17,12 +17,12 @@ resource "aws_mq_broker" "mq" {
   engine_version                      = "3.12.13"
   host_instance_type                  = "mq.m5.xlarge"
   publicly_accessible                 = false
-  security_groups = var.mq_security_group == null ? concat(
+  security_groups = concat(
     var.security_group_ids,
     [
       one(aws_security_group.mq).id
     ]
-  ) : [var.mq_security_group]
+  )
 
   storage_type = "ebs"
   subnet_ids   = data.aws_subnets.mq_subnets.ids
@@ -49,6 +49,7 @@ resource "aws_mq_broker" "mq" {
     kms_key_id        = var.use_aws_owned_key == true ? null : var.kms_key_id
     use_aws_owned_key = var.use_aws_owned_key
   }
+
   logs {
     audit   = null
     general = true

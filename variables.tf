@@ -10,16 +10,6 @@
 #     "mq_configuration",
 #     "security_group_ids"
 # ]
-variable "username" {
-  description = "The username for the MQ broker"
-  type        = string
-}
-
-variable "create_mq" {
-  description = "Flag to create MQ broker"
-  type        = bool
-  default     = true
-}
 
 variable "vpc_id" {
   description = "The VPC ID where the MQ broker will be deployed"
@@ -44,11 +34,6 @@ variable "name" {
 
 variable "kms_key_id" {
   description = "The KMS key ID for encryption"
-  type        = string
-}
-
-variable "mq_security_group" {
-  description = "The security group for the MQ broker"
   type        = string
 }
 
