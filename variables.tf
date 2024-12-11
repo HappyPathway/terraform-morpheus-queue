@@ -62,4 +62,5 @@ variable "user" {
 variable "subnet_name_filter" {
   description = "The filter for subnet names"
   type        = string
+  default     = "*-db-*"
 }
