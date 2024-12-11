@@ -35,6 +35,7 @@ variable "name" {
 variable "kms_key_id" {
   description = "The KMS key ID for encryption"
   type        = string
+  default     = null
 }
 
 variable "mq_configuration" {
