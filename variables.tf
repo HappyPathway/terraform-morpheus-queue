@@ -39,7 +39,10 @@ variable "kms_key_id" {
 
 variable "mq_configuration" {
   description = "The configuration for the MQ broker"
-  type        = string
+  type = object({
+    id       = string
+    revision = number
+  })
 }
 
 variable "security_group_ids" {
